@@ -21,22 +21,36 @@ struct Natalie {
         }
     }
 
-    let storyboards: [StoryboardFile]
+    let storyboards: [StoryboardFile]?
+    let xibs: [XibFile]?
     let header = Header()
 
     var storyboardCustomModules: Set<String> {
-        return Set(storyboards.lazy.flatMap { $0.storyboard.customModules })
+        return Set(storyboards?.lazy.flatMap { $0.storyboard.customModules } ?? [])
+    }
+    
+    var xibCustomModules: Set<String> {
+        return Set(xibs?.lazy.flatMap { $0.xib.customModules } ?? [])
+    }
+    
+    init(xibs: [XibFile]) {
+        self.xibs = xibs
+        self.storyboards = nil
+        assert(Set(xibs.map { $0.xib.os }).count < 2)
     }
 
     init(storyboards: [StoryboardFile]) {
         self.storyboards = storyboards
+        self.xibs = nil
         assert(Set(storyboards.map { $0.storyboard.os }).count < 2)
     }
 
-    static func process(storyboards: [StoryboardFile]) -> String {
+    static func process(storyboards: [StoryboardFile], xibs: [XibFile]) -> String {
         var output = String()
         for os in OS.allValues {
             let storyboardsForOS = storyboards.filter { $0.storyboard.os == os }
+            let xibsForOS = xibs.filter { $0.xib.os == os }
+
             if !storyboardsForOS.isEmpty {
 
                 if storyboardsForOS.count != storyboards.count {
@@ -54,6 +68,8 @@ struct Natalie {
     }
 
     func process(os: OS) -> String {
+        guard let storyboards = storyboards else { return "" }
+        
         var output = ""
 
         output += header.description

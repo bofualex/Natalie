@@ -21,6 +21,19 @@ func findStoryboards(rootPath: String, suffix: String) -> [String]? {
     return result.isEmpty ? nil : result
 }
 
+func findXibs(rootPath: String, suffix: String) -> [String]? {
+    var result = [String]()
+    let fm = FileManager.default
+    if let paths = fm.subpaths(atPath: rootPath) {
+        let xibPaths = paths.filter({ return $0.hasSuffix(suffix)})
+        // result = storyboardPaths
+        for p in xibPaths {
+            result.append((rootPath as NSString).appendingPathComponent(p))
+        }
+    }
+    return result.isEmpty ? nil : result
+}
+
 enum FirstLetterFormat {
     case none
     case capitalize

@@ -18,21 +18,29 @@ if CommandLine.arguments.count == 1 {
     exit(1)
 }
 
-var filePaths: [String] = []
+var storyboardPaths: [String] = []
 let storyboardSuffix = ".storyboard"
+
+var xibPaths: [String] = []
+let xibSuffix = ".xib"
 
 for arg in CommandLine.arguments.dropFirst() {
     if arg == "--help" {
         printUsage()
         exit(0)
     } else if arg.hasSuffix(storyboardSuffix) {
-        filePaths.append(arg)
+        storyboardPaths.append(arg)
     } else if let s = findStoryboards(rootPath: arg, suffix: storyboardSuffix) {
-        filePaths.append(contentsOf: s)
+        storyboardPaths.append(contentsOf: s)
+    } else if arg.hasSuffix(xibSuffix) {
+        xibPaths.append(arg)
+    } else if let x = findXibs(rootPath: arg, suffix: xibSuffix) {
+        xibPaths.append(contentsOf: x)
     }
 }
 
-let storyboardFiles = filePaths.compactMap { try? StoryboardFile(filePath: $0) }
+let storyboardFiles = storyboardPaths.compactMap { try? StoryboardFile(filePath: $0) }
+let xibFiles = xibPaths.compactMap { try? StoryboardFile(filePath: $0) }
 
 let output = Natalie.process(storyboards: storyboardFiles)
 print(output)
