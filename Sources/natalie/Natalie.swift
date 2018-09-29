@@ -8,6 +8,10 @@
 
 import Foundation
 
+typealias StoryboardOutput = String
+typealias XibOutput = String
+typealias Output = (storyboardOutput: StoryboardOutput, xibOutput: XibOutput)
+
 struct Natalie {
 
     struct Header: CustomStringConvertible {
@@ -45,8 +49,10 @@ struct Natalie {
         assert(Set(storyboards.map { $0.storyboard.os }).count < 2)
     }
 
-    static func process(storyboards: [StoryboardFile], xibs: [XibFile]) -> String {
-        var output = String()
+    static func process(storyboards: [StoryboardFile], xibs: [XibFile]) -> Output {
+        var storyboardOutput = StoryboardOutput()
+        var xibOutput = XibOutput()
+        
         for os in OS.allValues {
             let storyboardsForOS = storyboards.filter { $0.storyboard.os == os }
             let xibsForOS = xibs.filter { $0.xib.os == os }
@@ -54,17 +60,30 @@ struct Natalie {
             if !storyboardsForOS.isEmpty {
 
                 if storyboardsForOS.count != storyboards.count {
-                    output += "#if os(\(os.rawValue))\n"
+                    storyboardOutput += "#if os(\(os.rawValue))\n"
                 }
 
-                output += Natalie(storyboards: storyboardsForOS).process(os: os)
+                storyboardOutput += Natalie(storyboards: storyboardsForOS).process(os: os)
 
                 if storyboardsForOS.count != storyboards.count {
-                    output += "#endif\n"
+                    storyboardOutput += "#endif\n"
+                }
+            }
+            
+            if !xibsForOS.isEmpty {
+                
+                if xibsForOS.count != xibs.count {
+                    storyboardOutput += "#if os(\(os.rawValue))\n"
+                }
+                
+                xibOutput += Natalie(xibs: xibsForOS).processXib(os: os)
+                
+                if xibsForOS.count != xibs.count {
+                    xibOutput += "#endif\n"
                 }
             }
         }
-        return output
+        return (storyboardOutput, xibOutput)
     }
 
     func process(os: OS) -> String {

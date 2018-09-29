@@ -40,9 +40,9 @@ for arg in CommandLine.arguments.dropFirst() {
 }
 
 let storyboardFiles = storyboardPaths.compactMap { try? StoryboardFile(filePath: $0) }
-let xibFiles = xibPaths.compactMap { try? StoryboardFile(filePath: $0) }
+let xibFiles = xibPaths.compactMap { try? XibFile(filePath: $0) }
 
-let output = Natalie.process(storyboards: storyboardFiles)
+let output = Natalie.process(storyboards: storyboardFiles, xibs: xibFiles)
 print(output)
 
 exit(0)
