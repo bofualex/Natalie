@@ -10,6 +10,7 @@
 		173D9753215FEF9F00B1FCC7 /* XibFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D9752215FEF9F00B1FCC7 /* XibFile.swift */; };
 		173D9755215FF26A00B1FCC7 /* Natalie+Xib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D9754215FF26A00B1FCC7 /* Natalie+Xib.swift */; };
 		173D9757215FFA0300B1FCC7 /* XibScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D9756215FFA0300B1FCC7 /* XibScene.swift */; };
+		177546CC219482C100584AB6 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177546CB219482C100584AB6 /* View.swift */; };
 		17FE7748215FE0180063C682 /* Xib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FE7747215FE0180063C682 /* Xib.swift */; };
 		48E3E55B1EE6D5DF000D4B3F /* Natalie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3E55A1EE6D5DF000D4B3F /* Natalie.swift */; };
 		48E3E55D1EE6D85E000D4B3F /* Storyboard+Natalie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3E55C1EE6D85E000D4B3F /* Storyboard+Natalie.swift */; };
@@ -46,6 +47,7 @@
 		173D9752215FEF9F00B1FCC7 /* XibFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibFile.swift; sourceTree = "<group>"; };
 		173D9754215FF26A00B1FCC7 /* Natalie+Xib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Natalie+Xib.swift"; sourceTree = "<group>"; };
 		173D9756215FFA0300B1FCC7 /* XibScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibScene.swift; sourceTree = "<group>"; };
+		177546CB219482C100584AB6 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		17FE7747215FE0180063C682 /* Xib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xib.swift; sourceTree = "<group>"; };
 		48E3E55A1EE6D5DF000D4B3F /* Natalie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Natalie.swift; sourceTree = "<group>"; };
 		48E3E55C1EE6D85E000D4B3F /* Storyboard+Natalie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard+Natalie.swift"; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				750149421D5782CA00B22C87 /* Scene.swift */,
 				173D9756215FFA0300B1FCC7 /* XibScene.swift */,
 				7501493A1D57825F00B22C87 /* ViewController.swift */,
+				177546CB219482C100584AB6 /* View.swift */,
 				7501493C1D57827800B22C87 /* Segue.swift */,
 				7501493E1D57828D00B22C87 /* Reusable.swift */,
 				C4F8BEDE1F9C79BD0031195F /* Color.swift */,
@@ -290,6 +293,7 @@
 				75E28AAF1D577D0500A80623 /* String+Extension.swift in Sources */,
 				750149411D5782AC00B22C87 /* Storyboard.swift in Sources */,
 				48E3E55D1EE6D85E000D4B3F /* Storyboard+Natalie.swift in Sources */,
+				177546CC219482C100584AB6 /* View.swift in Sources */,
 				173D9755215FF26A00B1FCC7 /* Natalie+Xib.swift in Sources */,
 				75E28AB11D577D0500A80623 /* SWXMLHash.swift in Sources */,
 				C4F8BEDF1F9C79BD0031195F /* Color.swift in Sources */,

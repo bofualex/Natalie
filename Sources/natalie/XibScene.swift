@@ -9,7 +9,7 @@
 class XibScene: XMLObject {
     
     lazy var viewController: ViewController? = {
-        if let vcs = searchAll(root: self.xml, attributeKey: "customClass")?.first {
+        if let vc = searchAll(root: self.xml, attributeKey: "customClass")?.first {
             return ViewController(xml: vc)
         }
         return nil
